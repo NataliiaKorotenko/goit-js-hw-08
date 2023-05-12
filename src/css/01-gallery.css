@@ -12,6 +12,7 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  list-style: none;
 }
 
 .gallery__item {
@@ -29,6 +30,7 @@
   width: 100%;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
+  list-style: none;
 }
 
 .gallery__link {
