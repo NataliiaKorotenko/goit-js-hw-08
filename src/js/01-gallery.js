@@ -21,7 +21,27 @@ gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
 new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
-    docClose: false
+    //docClose: false
   });
+
+  gallery.addEventListener('click', onGalleryItemClick);
+
+  const instance = new SimpleLightbox(element);
+
+instance.on('close.simplelightbox', () => {
+  instance.close();
+});
+
+instance.on('show.simplelightbox', () => {
+  document.addEventListener('keydown', onModalKeyDown);
+});
+
+function onModalKeyDown(event) {
+  if (event.key === 'Escape') {
+    instance.close();
+    document.removeEventListener('keydown', onModalKeyDown);
+  }
+}
+
 
 console.log(galleryItems);
